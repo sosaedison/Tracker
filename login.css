@@ -1,0 +1,13 @@
+* {
+    margin: auto;
+}
+
+#login {
+    border-radius: 25px;
+    border: 2px solid #000000;
+    padding: 25px;
+    width: 200px;
+    height: 150px;
+    text-align: center;
+    margin-top: 250px;
+}
