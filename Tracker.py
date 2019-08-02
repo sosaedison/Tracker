@@ -103,7 +103,7 @@ class Tracker():
         print(settings['back_up_data'])
         for index, data in enumerate(settings['back_up_data']):
             try:
-                print(len(settings['back_up_data']))
+                
                 if self.sendbackup(data):
                     del settings['back_up_data'][index]
                 
