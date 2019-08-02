@@ -17,11 +17,9 @@ function Register(event) {
 	console.log('hi register');
 	console.log(app.db);
 	if(app.username.length < 2) { alert("Your Username must be at least 2 characters!"); }
-	if(app.avatar === '') { alert('Please select your Avitar');}
-	if((app.password === app.passwordcon) && app.password!= '' && app.avitar != '') {
+	if((app.password === app.passwordcon) && app.password!= '') {
 		PostJson(app.db+'?username='+app.username +'&password=' + app.password + '&company=' +app.company).then((data) => {
-			console.log("post POST");
-			window.location.href="BlackJack.html";
+			console.log(data);
 		})
 	} else { alert("Your password didn't match!"); }
 }

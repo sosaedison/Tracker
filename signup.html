@@ -13,18 +13,26 @@
         
         <div id="register">
 
-                <label for="username"> Username </label> <br>
+                <label for="username"> Username </label> 
+            <br>
                 <input type="text" name="usrname" placeholder="username" id="username"  v-model="username">
-                <br>
-                <label for="password"> Password </label> <br>
-                <input type="password" name="password" id="password" v-model="password"><br>
-                <label for="passwordrepeat"> Confirm Password</label> <br>
-            <input type="password" name="passwordcon" v-model="passwordcon" id="passwordrepeat">
+            <br>
+                <label for="password"> Password </label> 
+            <br>
+                <input type="password" name="password" id="password" v-model="password">
+            <br>
+                <label for="passwordrepeat"> Confirm Password</label> 
+            <br>
+                <input type="password" name="passwordcon" v-model="passwordcon" id="passwordrepeat">
+            <br>
+                <label for="company"> company: </label>
+            <br>
+                <input type="text" name="company" id="company" v-model="company">
             <br>
                 <input type="submit" value="Register" onclick="Register()">
             <br>
             <label for="loginlink"> Already Have an account?</label>
             <a id="loginlink" href="/login.html">Login</a>
-            </div>
+        </div>
 </body>
     

@@ -5,7 +5,7 @@ import hashlib
 
 app = Flask(__name__)
 CORS(app)
-m=hashlib.md5()
+
 
 @app.route("/")
 @app.route("/home")
@@ -37,22 +37,36 @@ def updatedb():
     ret = 'hello post'
     return jsonify(ret)
 
-@app.route("/login", methods = ['GET', 'POST'])
+@app.route("/login", methods = ['GET'])
 def login():
     username = request.args.get('username')
     password = request.args.get('password')
-    return jsonify(username)
+    company = 'Voxelvrp'
+
+    password = hashlib.md5(bytes(password,'utf-8'))
+
+    ret = "WE DIDNT FOUND IT"
+    with sqlite3.connect("db/userdata.db") as connection:
+        cursor = connection.cursor()
+        cursor.execute('SELECT * FROM users WHERE username=?', [username])
+        print("fectchone")
+        print(cursor.fetchall())
+    
+    return jsonify(ret)
 
 @app.route("/register", methods = ['POST'])
 def register():
     username = request.args.get('username')
     password = request.args.get('password')
     company = request.args.get('company')
-    m.update(password)
-    return jsonify(m.hexdigest())
-    # with sqlite3.connect("db/userdata.db") as connection:
-    #     connection.cursor().execute('INSERT INTO users (username, password, company) VALUES (?,?,?)', [username, password, company])
-    #     connection.commit()
+
+    passwordhash = hashlib.md5(bytes(password, 'utf-8'))
+    
+    with sqlite3.connect("db/userdata.db") as connection:
+        connection.cursor().execute('INSERT INTO users (username, psswrd, company) VALUES (?,?,?)', [username, password, company])
+        connection.commit()
+
+    return jsonify(passwordhash.hexdigest())
 
 if __name__ == "__main__":
     app.run(port=1234, debug=True)
