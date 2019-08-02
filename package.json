@@ -1,0 +1,23 @@
+{
+  "name": "tracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "login.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sosaedison/Tracker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sosaedison/Tracker/issues"
+  },
+  "homepage": "https://github.com/sosaedison/Tracker#readme",
+  "dependencies": {
+    "js-md5": "^0.7.3",
+    "md5": "^2.2.1"
+  }
+}

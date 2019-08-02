@@ -1,7 +1,11 @@
 from flask import Flask, render_template, jsonify, json, request
 import json, sqlite3
+from flask_cors import CORS
+import hashlib
 
 app = Flask(__name__)
+CORS(app)
+m=hashlib.md5()
 
 @app.route("/")
 @app.route("/home")
@@ -18,10 +22,7 @@ def sendtrackablegames():
 
 @app.route("/update", methods = ['POST', 'GET'])
 def updatedb():
-    # print(request.args.get('time'))
-    # print(request.args.get('date'))
-    # print(request.args.get('game'))
-    # print(request.args.get('tot_time'))
+    
     data = {
         "time": request.args.get('time'),
         "date": request.args.get('date'),
@@ -41,6 +42,17 @@ def login():
     username = request.args.get('username')
     password = request.args.get('password')
     return jsonify(username)
+
+@app.route("/register", methods = ['POST'])
+def register():
+    username = request.args.get('username')
+    password = request.args.get('password')
+    company = request.args.get('company')
+    m.update(password)
+    return jsonify(m.hexdigest())
+    # with sqlite3.connect("db/userdata.db") as connection:
+    #     connection.cursor().execute('INSERT INTO users (username, password, company) VALUES (?,?,?)', [username, password, company])
+    #     connection.commit()
 
 if __name__ == "__main__":
     app.run(port=1234, debug=True)
