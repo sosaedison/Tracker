@@ -20,7 +20,10 @@ function Init() {
 function Login(event) {
     
 	var response = GetJson(app.db+'?username='+app.username+'&password='+app.password).then((data) => {
-		console.log(data);
+        console.log(data);
+        data.forEach(element => {
+            console.log(element)
+        });
 	});
     console.log("response")
 }

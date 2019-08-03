@@ -44,29 +44,28 @@ def login():
     company = 'Voxelvrp'
 
     password = hashlib.md5(bytes(password,'utf-8'))
+    password = password.hexdigest()
 
-    ret = "WE DIDNT FOUND IT"
     with sqlite3.connect("db/userdata.db") as connection:
         cursor = connection.cursor()
-        cursor.execute('SELECT * FROM users WHERE username=?', [username])
-        print("fectchone")
-        print(cursor.fetchall())
-    
-    return jsonify(ret)
+        cursor.execute('SELECT * FROM users WHERE username=? AND psswrd=?', [username, password])
+        return jsonify(cursor.fetchall())
 
-@app.route("/register", methods = ['POST'])
+@app.route("/register", methods = ['POST','GET'])
 def register():
     username = request.args.get('username')
     password = request.args.get('password')
     company = request.args.get('company')
 
-    passwordhash = hashlib.md5(bytes(password, 'utf-8'))
+    hasher = hashlib.md5()
+    hasher.update(bytes(password, 'utf-8'))
+    passwordhash = hasher.hexdigest()
     
     with sqlite3.connect("db/userdata.db") as connection:
-        connection.cursor().execute('INSERT INTO users (username, psswrd, company) VALUES (?,?,?)', [username, password, company])
+        connection.cursor().execute('INSERT INTO users (username, psswrd, company) VALUES (?,?,?)', [ username, passwordhash, company])
         connection.commit()
-
-    return jsonify(passwordhash.hexdigest())
+        
+    return jsonify("hello")
 
 if __name__ == "__main__":
     app.run(port=1234, debug=True)
