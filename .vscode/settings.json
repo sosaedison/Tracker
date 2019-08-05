@@ -1,4 +1,4 @@
 {
     "git.ignoreLimitWarning": true,
-    "python.pythonPath": "C:\\Users\\CHIEF\\AppData\\Local\\Programs\\Python\\Python37\\python.exe"
+    "python.pythonPath": "/usr/local/bin/python3"
 }

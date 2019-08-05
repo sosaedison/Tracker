@@ -11,3 +11,6 @@ window.onload = () => {
 
     })
 }
+
+
+Vue.component
