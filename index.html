@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Voxel Tracker</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel='icon' href='voxel.ico' type='image/x-icon'/>
 	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -10,13 +11,53 @@
 <body>
 
 	<div id="app">
-		<div id="top-nav-bar">
-			<ul>
-				<li><a href="">Login</a></li>
-				<li><a href="">Register</a></li>
-			</ul>
+		<div id="navbar-background"></div>
+		<ul id="top-navbar">
+			<li><a href="">Login</a></li>
+			<div id="dropdown-signin">
 
-		</div>
+					<label for="username">Username:</label>
+					<input type="text" v-model="username" placeholder="Username" id="username">
+					
+					<br>
+					<br>
+		
+					<label for="password">Password: </label>
+					<input type="password" v-model="password" name="password" id="password">
+		
+					<br>
+					<br>
+		
+					<input type="submit" value="Login" onclick="Login()">
+				</div>
+			<li><a href="">Register</a></li>
+			
+			<div id="dropdown-register">
+
+					<label for="username">Username:</label>
+					<input type="text" v-model="username" placeholder="Username" id="username">
+					
+					<br>
+					<br>
+		
+					<label for="password">Password: </label>
+					<input type="password" v-model="password" name="password" id="password">
+	
+					<br>
+					<br>
+	
+					<label for="passwordrepeat">Confirm Password: </label>
+					<input type="password" v-model="passwordrepeat" name="passwordrepeat" id="passwordrepeat">
+		
+					<br>
+					<br>
+	
+					<input type="submit" value="Register" onclick="Register()">
+	
+			</div>
+		</ul>
+		
+		
 		<div id="data-table">
 
 
@@ -30,6 +71,10 @@
 			el: '#app',
 			data: {
 				message: "hello",
+				username: '',
+				password: '',
+				passwordrepeat: '',
+				company: '',
 			}
 		})
 
