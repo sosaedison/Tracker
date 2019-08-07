@@ -1,51 +1,25 @@
 * {
-    
     font-family: sans-serif;
+    margin: 0 auto;
 }
 
 body {
-    height: 100%;
-    background: #4d4c4c;
-    margin: 0;
+    background-color: black;
+}
+
+.app-container {
+    border-radius: 15px;
 }
 
 #app {
-    max-width: 500px;
-    margin: auto;
+    max-width: 85%;
+    margin-top: 2%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: white;
 }
 
-#navbar-background {
-    width: 100%;
-    background-color: black;
+#navbar ul {
+    list-style: none;
 }
-
-#top-navbar {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: black;
-}
-
-#top-navbar li {
-    float: right;
-    padding-right: 100;
-
-}
-
-#top-navbar a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    transition:0.3s;
-}
-
-#top-navbar a:hover {
-    background-color: #8EFFFF;
-    color: black;
-}
-
-
 

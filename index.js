@@ -1,16 +1,15 @@
-window.onload = () => {
 
-    var app = new Vue({
-        el: "#app",
+function Init() {
+    
+    var app = new Vue ({
+        el: '#app',
         data: {
-
-        },
-        methods: {
-            
+            message: "hello",
+            username: '',
+            password: '',
+            passwordrepeat: '',
+            company: '',
         }
-
     })
+
 }
-
-
-Vue.component

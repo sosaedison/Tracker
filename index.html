@@ -6,79 +6,19 @@
 	<link rel='icon' href='voxel.ico' type='image/x-icon'/>
 	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="index.js"></script>
 	<link rel="stylesheet" type="text/css"	href="index.css">
+	
 </head>
-<body>
-
-	<div id="app">
-		<div id="navbar-background"></div>
-		<ul id="top-navbar">
-			<li><a href="">Login</a></li>
-			<div id="dropdown-signin">
-
-					<label for="username">Username:</label>
-					<input type="text" v-model="username" placeholder="Username" id="username">
-					
-					<br>
-					<br>
-		
-					<label for="password">Password: </label>
-					<input type="password" v-model="password" name="password" id="password">
-		
-					<br>
-					<br>
-		
-					<input type="submit" value="Login" onclick="Login()">
-				</div>
-			<li><a href="">Register</a></li>
-			
-			<div id="dropdown-register">
-
-					<label for="username">Username:</label>
-					<input type="text" v-model="username" placeholder="Username" id="username">
-					
-					<br>
-					<br>
-		
-					<label for="password">Password: </label>
-					<input type="password" v-model="password" name="password" id="password">
-	
-					<br>
-					<br>
-	
-					<label for="passwordrepeat">Confirm Password: </label>
-					<input type="password" v-model="passwordrepeat" name="passwordrepeat" id="passwordrepeat">
-		
-					<br>
-					<br>
-	
-					<input type="submit" value="Register" onclick="Register()">
-	
-			</div>
-		</ul>
-		
-		
-		<div id="data-table">
-
-
+<body onload="Init()">
+	<div id="app" class="app-container">
+		<div id="navbar">
+			<ul>
+				<li><button>Login</button></li>
+				<li><button>Create Account</button></li>
+			</ul>
 		</div>
-		
 	</div>
-
-	<script>
-		
-		var app = new Vue ({
-			el: '#app',
-			data: {
-				message: "hello",
-				username: '',
-				password: '',
-				passwordrepeat: '',
-				company: '',
-			}
-		})
-
-	</script> 
 </body>	
 </html>
  
