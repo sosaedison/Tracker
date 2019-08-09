@@ -67,5 +67,12 @@ def register():
         
     return jsonify("hello")
 
+@app.route("/datadump", methods = ['GET'])
+def datadump():
+    with sqlite3.connect("db/voxel.db") as connection:
+        
+
+
+
 if __name__ == "__main__":
     app.run(port=1234, debug=True)
