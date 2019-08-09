@@ -11,8 +11,20 @@ body {
     border-radius: 15px;
 }
 
+#table-for-data {
+    overflow-y: scroll;
+    color: white;
+    max-height: 100px;
+}
+
+#table-for-data td{
+    border: 1px solid white;
+    width: 50%;
+}
+
 #app {
     max-width: 85%;
+    max-height: 95%;
     margin-top: 2%;
     padding-top: 30px;
     padding-bottom: 30px;

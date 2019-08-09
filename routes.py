@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, json, request
+from flask import Flask, render_template, jsonify, json, request, session, redirect
 import json, sqlite3
 from flask_cors import CORS
 import hashlib
@@ -7,10 +7,14 @@ app = Flask(__name__)
 CORS(app)
 
 
-@app.route("/")
-@app.route("/home")
+
+@app.route("/", methods=["GET", "POST"])
 def index():
-    return "hello world"
+    # password = 
+    # if request.method == 'POST':
+
+    #     session['user'] = request.args.get('username')
+    return render_template('login.html')
 
 
 @app.route("/trackablegames")
@@ -70,8 +74,16 @@ def register():
 @app.route("/datadump", methods = ['GET'])
 def datadump():
     with sqlite3.connect("db/voxel.db") as connection:
-        
+        curs = connection.cursor()
+        curs.execute("SELECT * FROM voxel_data")
+        return jsonify(curs.fetchall())
 
+@app.route('/usernamedump', methods=['GET'])
+def usernamedump():
+    with sqlite3.connect("db/userdata.db") as connection:
+        curs = connection.cursor()
+        curs.execute('SELECT username FROM users')
+        return jsonify(curs.fetchall())
 
 
 if __name__ == "__main__":
