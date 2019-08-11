@@ -4,7 +4,7 @@ let app = new Vue({
     data: {
         username: '',
         password: '',
-        login_db: 'http://127.0.0.1:1234/login',
+        login_db: 'http://127.0.0.1:1234/',
         username_db: 'http://127.0.0.1:1234/usernamedump',
         usernames: [],
     },
@@ -30,19 +30,26 @@ function PullUsernames(data) {
 
 function Login(event) {
     
-	var response = GetJson(app.login_db+'?username='+app.username+'&password='+app.password).then((data) => {
+	var response = PostJson(app.login_db+'?username='+app.username+'&password='+app.password).then((data) => {
         console.log(data);
-        data.forEach(element => {
-            console.log(element)
-        });
+        
 	});
-    console.log("response")
 }
 
 function GetJson(url) {
 	return new Promise((resolve, reject) => {
 	console.log('hi promise');
 		$.get(url, (data) => {
+		console.log('hi GET');
+			resolve(data);
+		}, "json");
+	});
+}
+
+function PostJson(url) {
+	return new Promise((resolve, reject) => {
+	console.log('hi promise');
+		$.post(url, (data) => {
 		console.log('hi GET');
 			resolve(data);
 		}, "json");

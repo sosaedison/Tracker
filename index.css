@@ -1,63 +1,15 @@
-* {
-    font-family: sans-serif;
-    margin: 0 auto;
+body, html {
+    height: 100%;
+    margin: 0;
 }
 
-body {
-    background-color: rgb(105, 105, 105);
-}
+#bg {
+    background-image: url(C://Users/CHIEF/Documents/GitHub/Tracker/images/home_page_background2.jpg);
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 
-.app-container {
-    border-radius: 15px;
-}
-
-#table-for-data {
-    overflow-y: scroll;
-    color: white;
-    max-height: 100px;
-}
-
-#table-for-data td{
-    border: 1px solid white;
-    width: 50%;
-}
-
-#app {
-    max-width: 85%;
-    max-height: 95%;
-    margin-top: 2%;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    background-color: black;
-}
-
-#logo{
-    color: white;
-    margin-left: 10px;
-}
-#navbar ul {
-    list-style: none;
-    margin-right: 10px;
-    padding: 0;
-    background-color: black;
-    overflow: hidden;
-}
-
-#navbar li {
-    float: right;
-}
-
-#navbar a {
-    display: block;
-    color: white;
-    padding: 14px 16px;
-    text-decoration: none;
-    transition: 0.3s;
-}
-
-#navbar a:hover {
-    color: black;
-    background-color: rgb(0, 247, 255);
 }
 
 

@@ -1,20 +1,35 @@
 from flask import Flask, render_template, jsonify, json, request, session, redirect
-import json, sqlite3
+from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
-import hashlib
+import json, sqlite3, hashlib
+
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] ='94b351635db94a3b26de70ef855a5850'
 CORS(app)
 
 
 
 @app.route("/", methods=["GET", "POST"])
 def index():
-    # password = 
-    # if request.method == 'POST':
+    rawpassword = request.args.get('password')
+    passwordhash = hashlib.md5(bytes(rawpassword, 'utf-8'))
+    password = passwordhash.hexdigest()
+    isUser = False
 
-    #     session['user'] = request.args.get('username')
-    return render_template('login.html')
+    print(request.args.get('username'))
+    print(request.args.get('password'))
+    print(request.method)
+    print(password)
+    if request.method == 'POST':
+        with sqlite3.connect("db/userdata.db") as connection:
+            curs = connection.cursor()
+            curs.execute('SELECT * FROM users WHERE username=? and psswrd=?', [request.args.get('username'), password])
+            print(curs.fetchall())
+        
+        # session['user'] = request.args.get('username')
+    # return render_template('login.html    ')
+    return "hello world lol"
 
 
 @app.route("/trackablegames")
@@ -84,7 +99,6 @@ def usernamedump():
         curs = connection.cursor()
         curs.execute('SELECT username FROM users')
         return jsonify(curs.fetchall())
-
-
+ 
 if __name__ == "__main__":
     app.run(port=1234, debug=True)
