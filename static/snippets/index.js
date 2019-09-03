@@ -1,15 +1,18 @@
-let app = new Vue ({
-    el: '#app',
-    data: {
-        message: "hello",
-        username: '',
-        password: '',
-        passwordrepeat: '',
-        company: '',
-        data_arr: [],
-        company_data_url: 'http://127.0.0.1:1234/datadump'
-    },    
-})
+function Init() {
+    console.log("hi init")
+    let app = new Vue ({
+        el: '#app',
+        data: {
+            message: "hello",
+            username: '',
+            password: '',
+            passwordrepeat: '',
+            company: '',
+            data_arr: [],
+            company_data_url: 'http://127.0.0.1:1234/datadump'
+        },    
+    })
+}
 
 function GetData() {
     GetJson(app.company_data_url).then((data) =>{

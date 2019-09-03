@@ -1,0 +1,58 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Manjari', sans-serif;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    background: url(/static/snippets/images/home_page_background2.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#app {
+    height: 100%;
+}
+
+
+#home_nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 8vh;
+}
+
+#login {
+    position: absolute;
+    width: 400px;
+    height: 250px;
+    top: 20%;
+    left: 35%;
+    background: rgb(48, 48, 48);
+    border: 2px solid white;
+    opacity: 0.7;
+    filter: alpha(opacity=50);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#login-container{
+    text-align: center;
+    color: white;
+}
+
+#login-container #login-logo{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+#login-container a{
+
+    text-decoration: none;
+    color: white;
+}

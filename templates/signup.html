@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sign Up</title>
+        
+        <script type="application/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> 
+        <link href="https://fonts.googleapis.com/css?family=Manjari&display=swap" rel="stylesheet">	
+        <link rel="stylesheet" href="/templates/css/index.css">
+    
+    </head>
+    <body onload="Init()">
+        <div id="app" class="signup-container">
+            
+                <div id="home_logo"></div>
+                <nav id="home_nav">
+                    <li></li>
+                </nav>
+                
+                <div id="signup">
+                    <div id="signup-container">
+                        <h2 id="signup-logo">Sign Up</h2>
+    
+                        <label for="inputname">Name</label>
+                        <br>
+                        <input id="name" type="text" name="name" placeholder="Johnny Appleseed" v-model="name" class="inputbox">
+    
+                        <br><br>
+    
+                        <label for="email">Email</label>
+                        <br>
+                        <input id="email" type="text" name="email" placeholder="email" v-model="email" class="inputbox">
+    
+                        <br><br>
+        
+                        <label for="company">Company</label>
+                        <br>
+                        <input id="company" type="text" name="company" placeholder="company" v-model="company" class="inputbox">
+    
+                        <br><br>
+    
+                        <label for="username">Username</label>
+                        <br>
+                        <input id="username" type="text" name="username" placeholder="user123" v-model="username" class="inputbox">
+        
+                        <br><br>
+        
+                        <label for="password">Password</label>
+                        <br>
+                        <input type="password" name="password" placeholder="psswrd" v-model="password" class="inputbox">
+        
+                        <br><br>
+        
+                        <label for="password-confirm">Confirm Password</label>
+                        <br>
+                        <input type="password" name="password-confirm" v-model="password_confirm" class="inputbox">
+    
+                        <br><br>
+                        
+                        <input type="button" value="Submit" onclick="Login()">
+        
+                        <br><br>
+        
+                        <label for="login-link"> Already have an account?</label>
+                        <a id="login-link" href="file:///Users/sosaedison/Documents/GitHub/Tracker/index.html">Login</a>
+        
+                    </div>
+                    
+                </div>
+                
+                <div id="home_logo">
+        
+                </div>
+        </div>
+        <script src="signup.js"></script>
+        
+
+    </body>
+</html>
+
+    

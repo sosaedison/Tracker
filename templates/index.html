@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	
+	<title>Login - Voxel Tracker</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel='icon' href='/images/voxel.ico' type='image/x-icon'/>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script type="application/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	
+
+	<link href="https://fonts.googleapis.com/css?family=Manjari&display=swap" rel="stylesheet">	
+</head>
+<body onload="Init()">
+	
+	<div id="app" class="app-container">
+		
+		<div id="home_logo"></div>
+		<nav id="home_nav">
+			<li></li>
+		</nav>
+		
+		<div id="login">
+			<div id="login-container">
+				<h2 id="login-logo">Login</h2>
+
+				<label for="username">Username</label>
+				<br>
+				<input type="text" name="username" placeholder="user123" v-model="username">
+
+				<br><br>
+
+				<label for="password">Password</label>
+				<br>
+				<input type="password" name="password" placeholder="psswrd" v-model="password">
+
+				<br><br>
+
+				<input type="button" value="Submit" onclick="Login()">
+
+				<br><br>
+
+				<label for="signup-link"> Don't have an account?</label>
+				<a id="signup-link" href="file:///Users/sosaedison/Documents/GitHub/Tracker/signup.html">Sign Up!</a>
+
+			</div>
+		</div>
+		
+		<div id="home_logo">
+
+		</div>
+		
+	</div>
+
+	<script src="/static/snippets/index.js"></script>
+	<link rel="stylesheet" type="text/css"	href="/static/snippets/index.css">
+
+</body>	
+</html>
+ 

@@ -9,10 +9,35 @@ function Init() {
 			db: 'http://127.0.0.1:1234/register',
 			passwordcon:'',
 			company: '',
+			name: '',
+			email:'',
+			password_confirm: '',
         }
 	});
+	AddListeners();
 }
 
+function AddListeners() {
+	document.getElementById("name").addEventListener("input", (event) => {
+		CheckName(app.name)
+	})
+	document.getElementById("email").addEventListener("input", (event) => {
+		CheckName(app.email)
+	})
+	document.getElementById("company").addEventListener("input", (event) => {
+		CheckName(app.company)
+	})
+	document.getElementById("username").addEventListener("input", (event) =>{ 
+		CheckName(app.username)
+	})
+}
+
+function CheckName (name) {
+	PostJson(app.db+'?name='+name+'&src='+'checkname').then((data) => {
+		console.log(data);
+		return true
+	})
+}
 function Register(event) {
 	console.log('hi register');
 	console.log(app.db);
