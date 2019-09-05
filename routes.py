@@ -7,10 +7,10 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] ='94b351635db94a3b26de70ef855a5850'
 CORS(app)
 
+
 @app.route("/", methods=["GET", "POST"])
 def index():
-    if request.method == 'POST':
-        if flaskhelper.userexists(request.args.get('username'), request.args.get('password'))
+    
     return render_template('index.html')
 
 

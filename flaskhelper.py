@@ -10,7 +10,7 @@ def checkname(name):
         print(ex)
         return False
 
-def login(username, psswrd, company):
+def login(username, psswrd):
     password = hashlib.md5(bytes(password,'utf-8'))
     password = password.hexdigest()
     try:
