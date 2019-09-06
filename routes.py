@@ -37,7 +37,7 @@ def login():
     company = request.args.get('company')
 
     # Build object to send data to the next for data grabbing
-    return jsonify(flaskhelper.login(username, password, company))
+    return jsonify(flaskhelper.login(username, password))
 
 @app.route("/register", methods = ['POST','GET'])
 def register():
@@ -50,7 +50,7 @@ def register():
         email = request.args.get('email')
         fullname = request.args.get('fullname')
         
-        flaskhelper().register(username, password, email, fullname, company)
+        flaskhelper.register(username, password, email, fullname, company)
     elif src == 'checkname':
         return jsonify(flaskhelper.checkname(request.args.get('name')))
     
