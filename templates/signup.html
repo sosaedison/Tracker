@@ -6,7 +6,8 @@
         <script type="application/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> 
         <link href="https://fonts.googleapis.com/css?family=Manjari&display=swap" rel="stylesheet">	
-        <link rel="stylesheet" href="/templates/css/index.css">
+        <link rel="stylesheet" href="/static/snippets/signup.css">
+        <link rel='icon' href='/static/snippets/images/voxel.ico' type='image/x-icon'/>
     
     </head>
     <body onload="Init()">
@@ -29,7 +30,7 @@
     
                         <label for="email">Email</label>
                         <br>
-                        <input id="email" type="text" name="email" placeholder="email" v-model="email" class="inputbox">
+                        <input id="email" type="email" name="email" placeholder="email" v-model="email" class="inputbox">
     
                         <br><br>
         
@@ -57,12 +58,12 @@
     
                         <br><br>
                         
-                        <input type="button" value="Submit" onclick="Login()">
+                        <input id="submit" type="button" value="Submit" onclick="Login()" disabled>
         
                         <br><br>
         
                         <label for="login-link"> Already have an account?</label>
-                        <a id="login-link" href="file:///Users/sosaedison/Documents/GitHub/Tracker/index.html">Login</a>
+                        <a id="login-link" href="/">Login!</a>
         
                     </div>
                     
@@ -72,7 +73,7 @@
         
                 </div>
         </div>
-        <script src="signup.js"></script>
+        <script src="/static/snippets/signup.js"></script>
         
 
     </body>

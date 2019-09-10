@@ -13,6 +13,9 @@ def index():
     
     return render_template('index.html')
 
+@app.route("/signup", methods=["GET"])
+def signup():
+    return render_template('signup.html')
 
 @app.route("/trackablegames")
 def sendtrackablegames():
@@ -30,18 +33,16 @@ def updatedb():
     return jsonify(flaskhelper.updatedatabase(time, date, game, tot_time, bayid))
     
 
-@app.route("/login", methods = ['GET'])
+@app.route("/login", methods = ['POST'])
 def login():
     username = request.args.get('username')
     password = request.args.get('password')
-    company = request.args.get('company')
 
-    # Build object to send data to the next for data grabbing
     return jsonify(flaskhelper.login(username, password))
 
-@app.route("/register", methods = ['POST','GET'])
+@app.route("/register", methods = ['GET'])
 def register():
-    src = request.args.get['src']
+    src = request.args.get('src')
 
     if src == 'register':
         username = request.args.get('username')
@@ -51,8 +52,9 @@ def register():
         fullname = request.args.get('fullname')
         
         flaskhelper.register(username, password, email, fullname, company)
-    elif src == 'checkname':
-        return jsonify(flaskhelper.checkname(request.args.get('name')))
+    elif src == 'checkcompany':
+        print("hi")
+        return jsonify(flaskhelper.checkcompany(request.args.get('company')))
     
     return jsonify("hello")
 

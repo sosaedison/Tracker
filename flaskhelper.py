@@ -10,6 +10,17 @@ def checkname(name):
         print(ex)
         return False
 
+def checkcompany(company):
+
+    with sqlite3.connect("db/companies.db") as connection:
+        cursor = connection.cursor()
+        cursor.execute('SELECT * FROM companylist WHERE companyname=?',[company])
+        if cursor.fetchall() != []:
+            return True
+
+    return False
+
+
 def login(username, psswrd):
     password = hashlib.md5(bytes(psswrd,'utf-8'))
     password = password.hexdigest()
@@ -47,7 +58,7 @@ def getgames():
 def updatedatabase(time, date, game, tot_time, bayid):
     try:
         with sqlite3.connect("db/voxel.db") as connection:
-            connection.cursor().execute('INSERT INTO data (game, date, time, time_played, bayid) VALUES (?,?,?,?,?)',[data['game'], data['date'], data['time'], data['tot_time'], data['bayid']])
+            connection.cursor().execute('INSERT INTO data (game, date, time, time_played, bayid) VALUES (?,?,?,?,?)',[game, date, time, tot_time, bayid])
             connection.commit()
             return "updated!"
     except Exception as ex:
