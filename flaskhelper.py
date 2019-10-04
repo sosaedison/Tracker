@@ -24,28 +24,28 @@ def checkcompany(company):
 def login(username, psswrd):
     password = hashlib.md5(bytes(psswrd,'utf-8'))
     password = password.hexdigest()
+    print('hi')
     try:
         with sqlite3.connect("db/userdata.db") as connection:
             cursor = connection.cursor()
-            cursor.execute('SELECT * FROM users WHERE username=? AND psswrd=?', [username, password])
-            return cursor.fetchall()
+            cursor.execute('SELECT * FROM user_data WHERE username=? AND psswrd=?', [username, password])
+            return cursor.fetchone()
     except Exception as ex:
         print(ex)
         return False
+
 
 def register(username, psswrd, email, fullname, company):
-    psswrd = hashlib.md5(bytes(psswrd,'utf-8')) 
-    psswrd = psswrd.hexdigest()
-    try:
-        with sqlite3.connect("db/userdata.db") as connection:
-            cursor = connection.cursor()
-            cursor.execute('INSERT INTO user_data (fullname, email, username, psswrd, company) VALUES (?,?,?,?,?)', [fullname, email, username, psswrd, company])
-            connection.commit()
-            return 'updated!'
-    except Exception as ex:
-        print(ex)
-        return False
-
+	psswrd = hashlib.md5(bytes(psswrd,'utf-8')) 
+	psswrd = psswrd.hexdigest()
+	try:
+		with sqlite3.connect("db/userdata.db") as connection:
+			cursor = connection.cursor()
+			cursor.execute('INSERT INTO user_data (fullname, email, username, psswrd, company) VALUES (?,?,?,?,?)', [fullname, email, username, psswrd, company])
+			connection.commit()
+			return "updated"
+	except Exception as ex:
+		print(ex)
 def getgames():
     try:
         with open('server_config.json','r') as settings_file:

@@ -9,7 +9,7 @@ function Init() {
 			db: "http://127.0.0.1:5000/register",
 			passwordcon:'',
 			company: '',
-			name: '',
+			fullname: '',
 			email:'',
 			password_confirm: '',
 			companyvalid: false,
@@ -17,7 +17,7 @@ function Init() {
 			emailvalid: false,
         }
 	});
-	AddListeners();
+	//AddListeners();
 }
 
 function AddListeners() {
@@ -27,26 +27,24 @@ function AddListeners() {
 	let email = document.getElementById("email")
 	let username = document.getElementById("username")
 
-	company.addEventListener("keyup", (event) => {
-		if(company.value.length > 1){
-			console.log(" ")
-			console.log("length true")
-			if (isValidCompany(company.value) == true) {
-				console.log("true data")
-				company.style.borderColor = "red"
-			} else {
-				console.log("false data")
-				company.style.borderColor = "white"
-			}
-		} else {
-			console.log("length false")
-			company.style.borderColor = "white"
-		}
-	})
+	// company.addEventListener("keyup", (event) => {
+	// 	if(company.value.length > 1){
+	// 		console.log(" ")
+	// 		console.log("length true")
+	// 		if (isValidCompany(company.value) == true) {
+	// 			console.log("true data")
+	// 			company.style.borderColor = "red"
+	// 		} 
+	// 	} else {
+	// 		console.log("length false")
+	// 		company.style.borderColor = "white"
+	// 	}
+	// })
 }
 
 function Register(event) {
-	PostJson(app.db+'?username='+app.username +'&password=' + app.password + '&company=' +app.company).then((data) => {
+	console.log(app.fullname)
+	PostJson(app.db+'?username='+app.username +'&password=' + app.password + '&company=' +app.company + '&email=' + app.email + '&name=' + app.fullname + '&src=register').then((data) => {
 		
 		console.log(data);
 	})

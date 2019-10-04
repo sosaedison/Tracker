@@ -7,7 +7,6 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] ='94b351635db94a3b26de70ef855a5850'
 CORS(app)
 
-
 @app.route("/", methods=["GET", "POST"])
 def index():
     
@@ -33,14 +32,20 @@ def updatedb():
     return jsonify(flaskhelper.updatedatabase(time, date, game, tot_time, bayid))
     
 
-@app.route("/login", methods = ['POST'])
+@app.route("/login", methods = ['POST','GET'])
 def login():
     username = request.args.get('username')
     password = request.args.get('password')
+    print(password)
 
-    return jsonify(flaskhelper.login(username, password))
+    if flaskhelper.login(username, password) == None:
+        print("login failed")
+        return render_template('index.html')
 
-@app.route("/register", methods = ['GET'])
+    return "hello"
+
+
+@app.route("/register", methods = ['GET', 'POST'])
 def register():
     src = request.args.get('src')
 
@@ -49,14 +54,15 @@ def register():
         password = request.args.get('password')
         company = request.args.get('company')
         email = request.args.get('email')
-        fullname = request.args.get('fullname')
+        fullname = request.args.get('name')
         
-        flaskhelper.register(username, password, email, fullname, company)
+        return flaskhelper.register(username, password, email, fullname, company)
+        
     elif src == 'checkcompany':
         print("hi")
         return jsonify(flaskhelper.checkcompany(request.args.get('company')))
     
-    return jsonify("hello")
+    return "wrong src"
 
 @app.route("/datadump", methods = ['GET'])
 def datadump():
