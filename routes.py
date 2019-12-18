@@ -1,12 +1,14 @@
 from flask import Flask, render_template, jsonify, json, request, session, redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
+from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 import flaskhelper
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] ='94b351635db94a3b26de70ef855a5850'
 CORS(app)
 
+'''Probably won't need this anymore with the React App now'''
 @app.route("/", methods=["GET", "POST"])
 def index():
     
@@ -15,6 +17,11 @@ def index():
 @app.route("/signup", methods=["GET"])
 def signup():
     return render_template('signup.html')
+
+@app.route("/reset", methods=["GET", 'POST'])
+def reset_password():
+    s = Serializer(app.config['SECRET_KEY'], 1800)
+    return s.dumps(app.config['SECRET_KEY']).decode('utf-8') 
 
 @app.route("/trackablegames")
 def sendtrackablegames():

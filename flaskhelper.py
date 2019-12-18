@@ -74,6 +74,7 @@ def getusernames():
     except Exception as ex:
         print(ex)
 
+
 def getdata():
     try:
         with sqlite3.connect("db/voxel.db") as connection:
