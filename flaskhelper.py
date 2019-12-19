@@ -57,29 +57,31 @@ def getgames():
 
 def updatedatabase(time, date, game, tot_time, bayid):
     try:
-        with sqlite3.connect("db/voxel.db") as connection:
-            connection.cursor().execute('INSERT INTO data (game, date, time, time_played, bayid) VALUES (?,?,?,?,?)',[game, date, time, tot_time, bayid])
-            connection.commit()
-            return "updated!"
+        connection = sqlconnection("db/voxel.db")
+        connection.cursor().execute('INSERT INTO data (game, date, time, time_played, bayid) VALUES (?,?,?,?,?)',[game, date, time, tot_time, bayid])
+        connection.commit()
+        return "updated!"
     except Exception as ex:
         print(ex)
         return False
 
 def getusernames():
     try:
-        with sqlite3.connect("db/userdata.db") as connection:
-            curs = connection.cursor()
-            curs.execute('SELECT username FROM user_data')
-            return curs.fetchall()
+        connection = sqlconnection("db/userdata.db")
+        curs = connection.cursor()
+        curs.execute('SELECT username FROM user_data')
+        return curs.fetchall()
     except Exception as ex:
         print(ex)
-
 
 def getdata():
     try:
-        with sqlite3.connect("db/voxel.db") as connection:
-            curs = connection.cursor()
-            curs.execute("SELECT * FROM voxel_data")
-            return curs.fetchall()
+        connection = sqlconnection("db/voxel.db")
+        curs = connection.cursor()
+        curs.execute("SELECT * FROM voxel_data")
+        return curs.fetchall()
     except Exception as ex:
         print(ex)
+
+def sqlconnection(db):
+    return sqlite3.connect(db)

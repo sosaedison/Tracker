@@ -142,7 +142,6 @@ class Tracker():
                     self.senddata(data)
             except Exception as ex:
                 print(ex)
-    
 
 def main():
     tracker = Tracker()
@@ -150,6 +149,3 @@ def main():
 
 if  __name__ == "__main__":
     main()
-
-
-        
